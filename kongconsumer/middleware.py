@@ -9,7 +9,7 @@ class KongConsumerMiddleware(RemoteUserMiddleware):
     header = 'HTTP_X_CONSUMER_USERNAME'
 
     def process_request(self, request):
-        super().process_request(request)
+        super(KongConsumerMiddleware, self).process_request(request)
 
         if self.header in request.META and request.user.is_authenticated():
             request._dont_enforce_csrf_checks = True
